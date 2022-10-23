@@ -113,8 +113,7 @@ Number:{} Fruit:{}'.format(phonenumber, num, currentFruit)
             result = {}
         print("res: "+str(result))
         print("#: "+str(phonenumber))
-        #check for phone number already having a number, resend message to 
-them
+        #check for phone number already having a number, resend message to them
         if phonenumber in result.values():
             print "found phone number"
             number = 
