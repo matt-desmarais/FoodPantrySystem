@@ -114,8 +114,7 @@ def sms():
         #check for phone number already having a number, resend message to them
         if phonenumber in result.values():
             print "found phone number"
-            number = 
-list(result.keys())[list(result.values()).index(phonenumber)]
+            number = list(result.keys())[list(result.values()).index(phonenumber)]
             print str(number)
             response_message = 'Hello {}\nYou are number: {}'.format(phonenumber, number)+'\nPlease fill out this form.\n'+form+str(number)
             resp.message(response_message)
