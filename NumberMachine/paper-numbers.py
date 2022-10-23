@@ -88,14 +88,11 @@ invert=False, smooth=False, flip=False)
     now = dt.datetime.now()
     p.text(str(now.strftime("%m-%d %H:%M")+"\n"))
     p.text("Starting number:"+str(num)+"\n")
-    p.set(align='center', font='a', width=6, height=6, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=6, height=6, density=9, invert=False, smooth=False, flip=False)
     p.text("Phone Number\n")
-    p.set(align='center', font='a', width=2, height=2, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=2, height=2, density=9, invert=False, smooth=False, flip=False)
     p.text("todays fruit is:\n")
-    p.set(align='center', font='a', width=6, height=6, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=6, height=6, density=9, invert=False, smooth=False, flip=False)
     p.text(str(fruit))
     p.cut()
 
@@ -109,11 +106,9 @@ def printNumber():
     f = open(todayfile, "w")
     f.write(str(num+1))
     f.close()
-    p.set(align='center', font='a', width=2, height=2, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=2, height=2, density=9, invert=False, smooth=False, flip=False)
     p.text("Sandwich Food Pantry\n\n")
-    p.set(align='center', font='a', width=1, height=1, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=1, height=1, density=9, invert=False, smooth=False, flip=False)
     p.text("Keep an eye out for your number\n\n")
     p.text(str(now.strftime("%m-%d %H:%M")+"\n"))
     p.text("Your number is\n")
