@@ -17,8 +17,7 @@ MQTT_PATH = "number_channel"
 c = ntplib.NTPClient()
 response = c.request('pool.ntp.org', version=3)
 ctime(response.tx_time)
-ntpnow = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S 
-%Y")
+ntpnow = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S %Y")
 print(ntpnow)
 print(ntpnow.date())
 now = dt.datetime.now()
