@@ -117,12 +117,10 @@ invert=False, smooth=False, flip=False)
     p.text("Keep an eye out for your number\n\n")
     p.text(str(now.strftime("%m-%d %H:%M")+"\n"))
     p.text("Your number is\n")
-    p.set(align='center', font='a', width=6, height=6, density=9, 
-invert=False, smooth=False, flip=False)
+    p.set(align='center', font='a', width=6, height=6, density=9, invert=False, smooth=False, flip=False)
     p.text(str(num))
     p.cut()
-    sendNotification((str(now.strftime("%m-%d %H:%M")+"\nJust gave out 
-number: ")+str(num)))
+    sendNotification((str(now.strftime("%m-%d %H:%M")+"\nJust gave out number: ")+str(num)))
     try:
         publish.single(MQTT_PATH, num+1, qos=1, hostname=MQTT_SERVER)
     except:
