@@ -149,8 +149,7 @@ def ReadDistance(pin):
    while GPIO.input(pin)==1 and (time.time() - looptime) <= .5:
       endtime=time.time()
    duration=endtime-starttime
-   # Distance is defined as time/2 (there and back) * speed of sound 34000 
-cm/s 
+   # Distance is defined as time/2 (there and back) * speed of sound 34000 cm/s 
    distance=duration*34000/2
    return distance
 
