@@ -19,8 +19,7 @@ form = "https://formstack.com/user/form?Order%20Number="
 c = ntplib.NTPClient()
 response = c.request('pool.ntp.org', version=3)
 ctime(response.tx_time)
-ntpnow = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S 
-%Y")
+ntpnow = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S %Y")
 print(ntpnow)
 print(ntpnow.date())
 now = dt.datetime.now()
@@ -89,8 +88,7 @@ def sms():
         with open(todayfile) as f:
             first_line = f.readline()
             num = int(first_line)
-        response_message = 'Hello {}, the test was successful. Next 
-Number:{} Fruit:{}'.format(phonenumber, num, currentFruit)
+        response_message = 'Hello {}, the test was successful. Next Number:{} Fruit:{}'.format(phonenumber, num, currentFruit)
         resp.message(response_message)
         return str(resp)
     if(currentFruit.lower() in message_body.lower()):
@@ -119,9 +117,7 @@ Number:{} Fruit:{}'.format(phonenumber, num, currentFruit)
             number = 
 list(result.keys())[list(result.values()).index(phonenumber)]
             print str(number)
-            response_message = 'Hello {}\nYou are number: 
-{}'.format(phonenumber, number)+'\nPlease fill out this 
-form.\n'+form+str(number)
+            response_message = 'Hello {}\nYou are number: {}'.format(phonenumber, number)+'\nPlease fill out this form.\n'+form+str(number)
             resp.message(response_message)
             return str(resp)
         else:
@@ -131,19 +127,15 @@ form.\n'+form+str(number)
             f.close()
             publish.single(MQTT_PATH, num+1, hostname=MQTT_SERVER)
             resp = MessagingResponse()
-            response_message = 'Hello {}\nYou are number: 
-{}'.format(phonenumber, num)+'\nPlease fill out this 
-form.\n'+form+str(num)
+            response_message = 'Hello {}\nYou are number: {}'.format(phonenumber, num)+'\nPlease fill out this form.\n'+form+str(num)
             resp.message(response_message)
             now = dt.datetime.now()
-            sendNotification(str(now.strftime("%m-%d 
-%H:%M"))+"\n"+str(phonenumber)+" is number "+str(num))
+            sendNotification(str(now.strftime("%m-%d %H:%M"))+"\n"+str(phonenumber)+" is number "+str(num))
             writeNumber(phonenumber, num)
             return str(resp)
     else:
         resp = MessagingResponse()
-        response_message = 'Hello {}, that is not the correct 
-word'.format(phonenumber)
+        response_message = 'Hello {}, that is not the correct word'.format(phonenumber)
         resp.message(response_message)
         return str(resp)
 
