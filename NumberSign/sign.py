@@ -22,8 +22,7 @@ options.rows = 32
 #options.cols = 64
 options.chain_length = 4
 options.parallel = 1
-options.hardware_mapping = 'adafruit-hat-pwm'  # If you have an Adafruit 
-HAT: 'adafruit-hat'
+options.hardware_mapping = 'adafruit-hat-pwm'  # If you have an Adafruit HAT: 'adafruit-hat'
 options.drop_privileges = 0
 options.daemon = 0
 options.pixel_mapper_config = 'U-mapper'
