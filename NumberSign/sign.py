@@ -14,6 +14,7 @@ from rgbmatrix import graphics
 from PIL import Image
 import ntplib
 from time import ctime
+from rpi_rf import RFDevice
 
 # Configuration for the matrix
 options = RGBMatrixOptions()
@@ -21,8 +22,7 @@ options.rows = 32
 #options.cols = 64
 options.chain_length = 4
 options.parallel = 1
-options.hardware_mapping = 'adafruit-hat-pwm'  # If you have an Adafruit 
-HAT: 'adafruit-hat'
+options.hardware_mapping = 'adafruit-hat-pwm'  # If you have an Adafruit HAT: 'adafruit-hat'
 options.drop_privileges = 0
 options.daemon = 0
 options.pixel_mapper_config = 'U-mapper'
@@ -31,14 +31,12 @@ matrix = RGBMatrix(options = options)
 max_brightness = matrix.brightness
 offscreen_canvas = matrix.CreateFrameCanvas()
 font = graphics.Font()
-font.LoadFont("/home/pi/fonts/newoldfontx2new.bdf")
+font.LoadFont("/home/pi/FoodPantrySystem/NumberSign/fonts/newoldfontx2new.bdf")
 font2 = graphics.Font()
-font2.LoadFont("/home/pi/fonts/10x20.bdf")
-#pos = offscreen_canvas.width/2
+font2.LoadFont("/home/pi/FoodPantrySystem/NumberSign/fonts/10x20.bdf")
 pos = 0
-#my_text = 0
 textColor = graphics.Color(255, 0, 0)
-image_file = "/home/pi/piggy.png"
+image_file = "/home/pi/FoodPantrySystem/NumberSign/logo.png"
 image = Image.open(image_file)
 
 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
@@ -79,9 +77,7 @@ def transition():
 
 
 MQTT_SERVER = "numbermachine.local"
-MQTT_PATH = "test_channel"
-
-from rpi_rf import RFDevice
+MQTT_PATH = "number_channel"
 
 rfdevice = None
 c = ntplib.NTPClient()
@@ -90,14 +86,10 @@ ctime(response.tx_time)
 now = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S 
 %Y")
 print(str(now)+"NOW")
-#now = dt.datetime.now()
 todayfile = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
 todayMax = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+"Max.txt"
 lastnumber = None
-
-
 maxNum = 1
-
 MQTT_SERVER2 = "localhost"
 MQTT_PATH2 = "number_channel"
  
@@ -129,9 +121,7 @@ client.connect_async(MQTT_SERVER2, 1883, 60)
  
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
-# Other loop*() functions are available that give a threaded interface and 
-a
-# manual interface.
+# Other loop*() functions are available that give a threaded interface and a manual interface.
 client.loop_start()
 
 GPIO.setmode(GPIO.BCM)
@@ -217,13 +207,9 @@ def nextNumber():
 todaysFile()
 todaysMax()
 
-logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',
-                    format='%(asctime)-15s - [%(levelname)s] %(module)s: 
-%(message)s', )
-parser = argparse.ArgumentParser(description='Receives a decimal code via 
-a 433/315MHz GPIO device')
-parser.add_argument('-g', dest='gpio', type=int, default=15,
-                    help="GPIO pin (Default: 25)")
+logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',format='%(asctime)-15s - [%(levelname)s] %(module)s: %(message)s', )
+parser = argparse.ArgumentParser(description='Receives a decimal code via a 433/315MHz GPIO device')
+parser.add_argument('-g', dest='gpio', type=int, default=15, help="GPIO pin (Default: 25)")
 args = parser.parse_args()
 signal.signal(signal.SIGINT, exithandler)
 rfdevice = RFDevice(args.gpio)
@@ -236,8 +222,7 @@ while True:
     if rfdevice.rx_code_timestamp != timestamp:
         timestamp = rfdevice.rx_code_timestamp
         print(str(rfdevice.rx_code))
-        if((str(rfdevice.rx_code) == "12345678") or (str(rfdevice.rx_code) 
-== "87654321")):
+        if((str(rfdevice.rx_code) == "12345678") or (str(rfdevice.rx_code) == "87654321")):
             rfdevice.cleanup()
             rfdevice.rx_code = None
             print("Detected")
@@ -249,4 +234,3 @@ while True:
 
     time.sleep(0.01)
 rfdevice.cleanup()
-
