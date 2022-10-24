@@ -32,9 +32,9 @@ matrix = RGBMatrix(options = options)
 max_brightness = matrix.brightness
 offscreen_canvas = matrix.CreateFrameCanvas()
 font = graphics.Font()
-font.LoadFont("/home/pi/fonts/newoldfontx2new.bdf")
+font.LoadFont("/home/pi/FoodPantrySystem/NumberSign/fonts/newoldfontx2new.bdf")
 font2 = graphics.Font()
-font2.LoadFont("/home/pi/fonts/10x20.bdf")
+font2.LoadFont("/home/pi/FoodPantrySystem/NumberSign/fonts/10x20.bdf")
 pos = 0
 textColor = graphics.Color(255, 0, 0)
 image_file = "/home/pi/FoodPantrySystem/NumberSign/logo.png"
