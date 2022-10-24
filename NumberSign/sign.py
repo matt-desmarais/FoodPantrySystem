@@ -86,8 +86,8 @@ ctime(response.tx_time)
 now = dt.datetime.strptime(ctime(response.tx_time), "%a %b %d %H:%M:%S 
 %Y")
 print(str(now)+"NOW")
-todayfile = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
-todayMax = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+"Max.txt"
+todayfile = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
+todayMax = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+"Max.txt"
 lastnumber = None
 maxNum = 1
 MQTT_SERVER2 = "localhost"
