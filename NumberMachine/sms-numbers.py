@@ -30,15 +30,15 @@ while(ntpnow.date() != now.date()):
     time.sleep(.5)
 
 #now = dt.datetime.now()
-todayfile = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
-todayfruit = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+"fruit.txt"
-fruitfile = "/home/pi/fruit.txt"
+todayfile = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
+todayfruit = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+"fruit.txt"
+fruitfile = "/home/pi/FoodPantrySystem/fruit.txt"
 #check for fruit+date file if exists read from it set fruit
 #else get todays fruit random from fruits.txt
 #write fruit+date with todays fruit set fruit
 
 now = dt.datetime.now()
-logfile = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+"logs.csv"
+logfile = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+"logs.csv"
 
 def sendNotification(message):
     conn = httplib.HTTPSConnection("api.pushover.net:443")
