@@ -2,14 +2,14 @@
 Food Pantry Numbering/Ordering System
 
 # Numbering/Ordering Services
-Ngrok
-Twilio
-Pushover
+Ngrok,
+Twilio,
+Pushover,
 Formstack
 
 # Packing Room Services
-Pushover
-Zapier
+Pushover,
+Zapier,
 Google Workspace Accounts (gmail)
 
 # Summary
