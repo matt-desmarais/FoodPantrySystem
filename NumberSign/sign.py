@@ -35,11 +35,9 @@ font = graphics.Font()
 font.LoadFont("/home/pi/fonts/newoldfontx2new.bdf")
 font2 = graphics.Font()
 font2.LoadFont("/home/pi/fonts/10x20.bdf")
-#pos = offscreen_canvas.width/2
 pos = 0
-#my_text = 0
 textColor = graphics.Color(255, 0, 0)
-image_file = "/home/pi/piggy.png"
+image_file = "/home/pi/FoodPantrySystem/NumberSign/logo.png"
 image = Image.open(image_file)
 
 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
