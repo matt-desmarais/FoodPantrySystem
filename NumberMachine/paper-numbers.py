@@ -33,8 +33,8 @@ number = 1
 count = 0
 starttime=0
 #now = dt.datetime.now()
-todayfile = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
-todayfruit = "/home/pi/files/"+str(now.strftime("%Y-%m-%d"))+"fruit.txt"
+todayfile = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+".txt"
+todayfruit = "/home/pi/FoodPantrySystem/files/"+str(now.strftime("%Y-%m-%d"))+"fruit.txt"
 # Use BCM based pin numbering
 GPIO.setmode(GPIO.BCM)
 
